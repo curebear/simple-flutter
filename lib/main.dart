@@ -10,7 +10,7 @@ import 'package:logging/logging.dart';
 
 void registerIoCProviders() {
   // Services
-  GetIt.I.registerSingleton<ApiService>(ApiService.build(ConnectionOptions(Strings.baseUrl, Strings.appVersion)));
+  GetIt.I.registerSingleton<ApiService>(ApiService.build(ConnectionOptions(Strings.baseUrl)));
 }
 
 void setupLogging() {
