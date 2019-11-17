@@ -11,6 +11,8 @@ A boilerplate project created in flutter using [MobX](https://github.com/mobxjs/
 
 ## Getting Started
 
+> make 
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
