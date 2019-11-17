@@ -5,7 +5,7 @@ A boilerplate project created in flutter using [MobX](https://github.com/mobxjs/
 
 > Basically, the whole architrecture was copied from [flutter-boilerplate-project](https://github.com/zubairehman/flutter-boilerplate-project). In the original project, it used Provider, but we replaced it with Get-It. Http client is auto-generated based on Chopper. OAuth-based authentication is simplified using simple-auth.
 
-## Screen shots
+## Screenshot
 
 <img src="docs/screenshots.png" width="400"/>
 
