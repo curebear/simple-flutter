@@ -8,6 +8,7 @@ A boilerplate project created in flutter using [MobX](https://github.com/mobxjs/
 ## Screen shots
 
 <img src="docs/screenshots.png" width="400"/>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
