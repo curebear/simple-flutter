@@ -1,0 +1,78 @@
+name: app 
+description: A new Flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.2.2 <3.0.0"
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+  flutter_cupertino_localizations: ^1.0.1
+
+
+  cupertino_icons: ^0.1.2
+
+  shared_preferences: ^0.5.3+4
+
+
+  flutter_launcher_icons: ^0.7.3
+
+  logger: ^0.6.0
+
+  mobx: ^0.3.8+1
+  flutter_mobx: ^0.3.3+1
+  mobx_codegen: ^0.3.9+1
+
+  validators: ^2.0.0+1
+  flushbar: ^1.9.0
+
+  http:
+  simple_auth:
+  simple_auth_flutter:
+
+
+  cached_network_image:
+
+  provider:
+  get_it:
+
+  chopper:
+
+dependency_overrides:
+  source_gen: 0.9.4+1
+  analyzer: ^0.37.1
+  intl: ^0.16.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  json_serializable: ^3.2.2
+  build_runner: ^1.7.1
+  chopper_generator:
+
+flutter_icons:
+  image_path: "assets/icons/ic_launcher.png"
+  android: true
+  ios: true
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+  - assets/images/
+  - assets/icons/
+
+  fonts:
+  - family: NotoSans
+    fonts:
+    - asset: assets/fonts/NotoSansCJKkr-Regular.otf
+    - asset: assets/fonts/NotoSansCJKkr-Bold.otf
+      weight: 700
