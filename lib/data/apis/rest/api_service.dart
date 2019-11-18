@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:meta/meta.dart';
 import 'package:chopper/chopper.dart';
 
 import 'package:app/data/apis/rest/converter.dart';
@@ -19,23 +21,27 @@ class ConnectionOptions {
 
 // ref: https://github.com/viniciustozzi/tcc_lang/blob/master/lib/components/core/logic/api_service.dart
 typedef String StringCallback();
+
+@immutable
 class CustomAuthInterceptor implements RequestInterceptor {
   final StringCallback callback;
 
-  CustomAuthInterceptor(this.callback);
+  const CustomAuthInterceptor(this.callback);
 
-  Future<Request> onRequest(Request request) async {
+  @override
+  FutureOr<Request> onRequest(Request request) async {
     if (this.callback != null) {
       var token = callback();
       return applyHeaders(request, {'Authorization': 'Bearer $token'});
-    } else {
-      return request;
-    }
+    } 
+
+    return request;
   }
 }
 
 class ApiService {
   final ChopperClient chopper;
+
   ApiService._internal(this.chopper);
 
   factory ApiService.build(ConnectionOptions options) {
@@ -46,7 +52,7 @@ class ApiService {
         PostsService.create(),
       ],
       interceptors: [
-        if (options.token != null) { CustomAuthInterceptor(() => options.token) },
+        CustomAuthInterceptor(() => options.token),
         HeadersInterceptor({
           ConnectionOptions.HTTP_HEADER_CACHE_CONTROL: 'no-cache',
           ConnectionOptions.HTTP_HEADER_APP_VERSION: options.appVersion,

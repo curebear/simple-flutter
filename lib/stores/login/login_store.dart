@@ -1,11 +1,13 @@
+import 'package:app/data/sharedpref/shared_preference_helper.dart';
 import 'package:mobx/mobx.dart';
 import 'package:validators/validators.dart';
-import 'package:simple_auth/simple_auth.dart' as simpleAuth;
+import 'package:get_it/get_it.dart';
 
 import 'package:app/stores/error/error_store.dart';
 import 'package:app/serializers/post/post_item.dart';
 import 'package:app/data/apis/auth/auth.dart';
-
+import 'package:app/data/apis/rest/api_service.dart';
+import 'package:app/constants/strings.dart';
 
 part 'login_store.g.dart';
 
@@ -17,6 +19,9 @@ abstract class _LoginStore with Store {
 
   // store for handling error messages
   final ErrorStore errorStore = ErrorStore();
+
+  // helper for SharedPreference
+  final SharedPreferenceHelper prefHelper = GetIt.I<SharedPreferenceHelper>();
 
   _LoginStore() {
     _setupValidations();
@@ -129,6 +134,7 @@ abstract class _LoginStore with Store {
       loading = false;
       success = true;
       errorStore.showError = false;
+      renewApiService(Strings.DUMMY_ACCESS_TOKEN);
     }).catchError((e) {
       loading = false;
       success = false;
@@ -168,6 +174,19 @@ abstract class _LoginStore with Store {
   @action
   Future logout() async {
     loading = true;
+  }
+
+  void renewApiService(String token) {
+    // TODO: Better than this?
+    GetIt.I.unregister<ApiService>();
+    GetIt.I.registerSingleton<ApiService>(
+      ApiService.build(
+        ConnectionOptions(
+          Strings.baseUrl, 
+          token: token)
+        )
+      );
+    prefHelper.saveAuthToken(token);
   }
 
   // general methods:-----------------------------------------------------------
