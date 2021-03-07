@@ -1,4 +1,4 @@
-# app
+# simple-flutter
 
 A boilerplate project created in flutter using [MobX](https://github.com/mobxjs/mobx.dart), [get-it](https://pub.dev/packages/get_it), [Chopper](https://pub.dev/packages/chopper), [simple_auth](https://github.com/clancey/simple_auth)
 
